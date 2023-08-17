@@ -7,21 +7,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.catalogo.moveis.Moveis;
 import com.catalogo.moveis.MoveisRepository;
+import com.catalogo.moveis.dto.MoveisResponseDTO;
 
 
 @RestController
-@RequestMapping("moveis")
+@RequestMapping("movel")
 public class MoveisController {
 	
 	@Autowired
 	private MoveisRepository repository;
   
 	@GetMapping
-	public List<Moveis> getAll() {
-		List<Moveis> moveisList = repository.findAll();
+	public List<MoveisResponseDTO> getAll() {
 		
+		List<MoveisResponseDTO> moveisList = repository.findAll().stream().map(MoveisResponseDTO::new).toList();
 		return moveisList;
 	}
 	
