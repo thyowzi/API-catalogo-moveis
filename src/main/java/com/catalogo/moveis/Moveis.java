@@ -1,5 +1,7 @@
 package com.catalogo.moveis;
 
+import com.catalogo.moveis.dto.MoveisRequestDTO;
+
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.GeneratedValue;
@@ -28,4 +30,10 @@ public class Moveis {
 	private String image;
 	
 	private Integer price;
+	
+	public Moveis(MoveisRequestDTO data) {
+		this.title = data.title();
+		this.image = data.image();
+		this.price = data.price();
+	}
 }
