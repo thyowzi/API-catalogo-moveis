@@ -3,6 +3,7 @@ package com.catalogo.moveis.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +23,7 @@ public class MoveisController {
 	@Autowired
 	private MoveisRepository repository;
   
+	@CrossOrigin(originPatterns = "*", allowedHeaders = "*")
 	@GetMapping
 	public List<MoveisResponseDTO> getAll() {
 		
@@ -29,6 +31,7 @@ public class MoveisController {
 		return moveisList;
 	}
 	
+	@CrossOrigin(originPatterns = "*", allowedHeaders = "*")
 	@PostMapping
 	public void saveMoveis(@RequestBody MoveisRequestDTO data) {
 		Moveis moveisData = new Moveis(data);
